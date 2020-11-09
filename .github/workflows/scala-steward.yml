@@ -7,8 +7,9 @@ jobs:
   scala-steward:
     runs-on: ubuntu-latest
     steps:
-    - name: Launch Scala Steward
-      if: ${{ !github.event.repository.fork }}
-      uses: xuwei-k/scala-steward-action@65461e9a57695ac4522cd0fb36ffa0596beab835
+    - uses: olafurpg/setup-scala@v10
+    - uses: laughedelic/coursier-setup@v1
+    - uses: coursier/cache-action@v5
+    - uses: xuwei-k/scala-steward-latest@c7e7821a1295d06706005accaae131e30c99e94e
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
